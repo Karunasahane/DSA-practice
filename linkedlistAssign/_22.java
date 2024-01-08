@@ -32,3 +32,22 @@ The merged list will be
 Expected Time Complexity: O(nk Logk)
 Expected Auxiliary Space: O(k)
 Note: n is the maximum size of all the k link list*/
+
+Node mergeKList(Node[]arr,int K){
+    Node temp = new Node(0);
+    Node tail = temp;
+    ArrayList<Integer> arrList = new ArrayList<>();
+    for(int i=0;i<arr.length;i++){
+        Node curr = arr[i];
+        while(curr != null){
+            arrList.add(curr.data);
+            curr = curr.next;
+        }
+    }
+    Collections.sort(arrList);
+    for(Integer i : arrList){
+        tail.next = new Node(i);
+        tail = tail.next;
+    }
+return temp.next;
+}
