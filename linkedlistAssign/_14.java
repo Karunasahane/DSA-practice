@@ -18,3 +18,35 @@ Output: 0 1 2 2
 Explanation: After arranging all the 0s,1s and 2s in the given format, the output will be 0 1 2 2.
 Expected Time Complexity: O(N).
 Expected Auxiliary Space: O(N).*/
+
+Node sorting(Node head){
+    if (head == null || head.next == null) {
+      return head;
+    }
+    int c0 = 0, c1 = 0, c2 = 0;
+    Node current = head;
+  
+    while (current != null) {
+        if (current.data == 0) c0++;
+        else if (current.data == 1) c1++;
+        else c2++;
+  
+      current = current.next;
+    }
+
+
+    current = head;
+    while (c0 > 0) {
+      current.data = 0;
+      current = current.next;
+    }
+    while (c1 > 0) {
+      current.data = 1;
+      current = current.next;
+    }
+    while (count2 > 0) {
+      current.data = 2;
+      current = current.next;
+    }
+return head;
+}
