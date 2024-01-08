@@ -9,3 +9,20 @@ LinkedList: 2->2->4->5
 Output: 2 4 5
 Explanation: In the given linked list 2 ->2 -> 4-> 5, only 2 occurs more than 1 time. So we need
 to remove it once. */
+
+ public ListNode deleteDuplicates(ListNode head) {
+        ListNode t=head;
+        if(t==null){
+            return null;
+        }
+        while(t.next!=null){
+            if(t.val==t.next.val){
+                t.next=t.next.next;
+            }
+            else{
+                t=t.next;
+            }
+        }
+        return head;
+        
+    }
