@@ -20,3 +20,47 @@ and Hence, the output is 0.
 
 Expected Time Complexity: O(N)
 Expected Auxiliary Space Usage: O(1) (ie, you should not use the recursive stack space as*/
+
+class palindrome{
+    Node reverse(Node head){
+          Node prev=null;
+          Node fast=null;
+          Node curr=head;
+          while(curr!=null){
+              fast=curr.next;
+              curr.next=prev;
+              prev=curr;
+              curr=fast;
+          }
+          return prev;
+    }
+
+    Node mid(){
+        Node slow=head;
+        Node fast=head;
+        while(fast.next!=null && fast.next.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
+        }
+        return slow;
+    }
+
+    boolean palindrome(){
+        Node t1=mid();
+        Node t2=reverse(t1.next);
+        t1.next=t2;
+    
+        Node temp1=head;
+        Node temp2=t2;
+        while(temp2!=null){
+            if(temp1.data!=temp2.data){
+                return false;
+            }
+            else{
+                temp1=temp1.next;
+                temp2=temp2.next;
+            }
+        }
+        return true;
+    }
+}
